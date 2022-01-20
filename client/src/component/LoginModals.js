@@ -52,7 +52,7 @@ function loginModal(props){
         </div>
     </div>
   <div className="modal-footer grey darken-4">
-  <a onClick={props.onClose} className="modal-close btn red darken-3">Close</a>
+  <button onClick={props.onClose} className="modal-close btn red darken-3">Close</button>
 
 
     </div>
