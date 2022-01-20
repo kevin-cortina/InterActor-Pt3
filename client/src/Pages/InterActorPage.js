@@ -3,7 +3,7 @@ import SearchBar from "../component/SearchBar";
 import ResultCard from "../component/ResultCard";
 import SearchFilter from "../component/SearchFilter";
 
-function interActorPage(){
+function InterActorPage(){
     return(
         <main>
         <SearchBar></SearchBar>  
@@ -12,4 +12,4 @@ function interActorPage(){
         </main>
     )
 }
-export default interActorPage
+export default InterActorPage

@@ -16,7 +16,7 @@ function  modals(props){
             </form>
         </div>
           <div className="modal-footer">
-          <a href="" className="modal-close btn red darken-3">Close</a>
+          <button onClick={props.onClose} className="modal-close btn red darken-3">Close</button>
           </div>
       </div>
     </div>

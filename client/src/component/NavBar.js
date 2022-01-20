@@ -1,7 +1,12 @@
 import React, { useState } from "react"
-import BioModals from './BioModals'
+// import BioModals from './BioModals'
 import LoginModal from "./LoginModals"
 
+const styles = {
+  div: {
+    color: 'white'
+  }
+};
 
 function NavBar(){
   const [showLoginModal, setshowLoginModal]= useState (false)
@@ -9,7 +14,7 @@ function NavBar(){
     return(
         <div className="row">
     <div id="test" className="col s3">
-      <h1 style="color: white;"> InterActor</h1>
+      <h1 style={styles.div}> InterActor</h1>
     </div>
 
     <div id="test" className="col s2 push-s6 valign-wrapper">
