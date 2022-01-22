@@ -17,8 +17,8 @@ function NavBar(){
       <h1 style={styles.div}> InterActor</h1>
     </div>
 
-    <div id="test" className="col s2 push-s6 valign-wrapper">
-      {/* {{#if loggedIn}} */}
+    {/*<div id="test" className="col s2 push-s6 valign-wrapper">
+       {{#if loggedIn}} 
         <div className="row">
           <div className="col s3">
           <button id="logout" className="btn red darken-2 modal-trigger">Logout</button>
@@ -27,12 +27,12 @@ function NavBar(){
           <a href="#biomodal" className="btn green darken-4 modal-trigger" id = "bio_btn">Bio</a>
           </div>
         </div>
-      {/* {{else}} */}
+       {{else}} 
       <button  onClick={()=> setshowLoginModal(true)} className="btn green darken-4 modal-trigger" id = "login_btn">Login/Signup</button>
-      {/* {{/if}} */}
-      <LoginModal show = {showLoginModal}onClose ={()=> setshowLoginModal(false)}></LoginModal>
+       {{/if}} 
+      <LoginModal show = {showLoginModal}onClose ={()=> setshowLoginModal(false)}/>
 
-    </div>
+    </div>*/}
   </div>
     )
 }

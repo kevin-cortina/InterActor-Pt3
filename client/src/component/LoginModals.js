@@ -11,12 +11,12 @@ function loginModal(props){
                   <form className = "form login-form">
                     <div className="input-field col s4">
                       <input id="user_name" type="text"/>
-                      <label for="user_name">User Name</label>
+                      <label htmlFor="user_name">User Name</label>
                     </div>
 
                     <div className="input-field col s4">
                         <input id="passWord" type="password"/>
-                        <label for="passWord">Password</label>
+                        <label htmlFor="passWord">Password</label>
                       </div>
                     <div className="col s4">
                           <button id = "login-button" className="btn waves-effect waves-light green"name="login-action">Login
@@ -34,12 +34,12 @@ function loginModal(props){
                 <form className = "form signup-form">
                   <div className="input-field col s4">
                     <input id="user_name_signup" type="text"/>
-                    <label for="user_name_signup">User Name</label>
+                    <label htmlFor="user_name_signup">User Name</label>
                   </div>
 
                   <div className="input-field col s4">
                       <input id="passWordSignup" type="password"/>
-                      <label for="passWordSignup">Password</label>
+                      <label htmlFor="passWordSignup">Password</label>
                   </div>
                   <div className="col s4">
                           <button id = "signup-button" className="btn waves-effect waves-light blue"name="signup-action">Login

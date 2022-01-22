@@ -1,5 +1,5 @@
 import './App.css';
-// import InterActorPage from './Pages/InterActorPage';
+import InterActorPage from './Pages/InterActorPage';
 // import BioModals from './component/BioModals';
 // import LoginModal from './component/LoginModals';
 import stylesheet from './assets/css/stylesheet.css'
@@ -8,8 +8,8 @@ import NavBar from './component/NavBar';
 function App() {
   return (
     <>
-    <NavBar></NavBar>
-    {/* <InterActorPage></InterActorPage> */}
+    {/* <NavBar></NavBar> */}
+    <InterActorPage/>
     {/* <BioModals></BioModals>
     <LoginModal></LoginModal> */}
 
