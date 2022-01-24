@@ -1,17 +1,7 @@
 // mongoose
 const { Schema, model } = require('mongoose')
 
-// password encrypter
-const bcrypt = require('bcrypt');
-
-// Create a new Sequelize model for books
-class Favorites extends Model {
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-    }
-}
-
-const favoriteSchema = new schema(
+const favoriteSchema = new Schema(
     {
         title: {
             type: String,

@@ -1,16 +1,35 @@
 import React from "react";
-function searchBar(){
+import exportInfo from "./../utils/helpers.js"
+function SearchBar(){
+
+  const handleInput = exportInfo();
+
+  const styles = { 
+    div1: { 
+      backgroundColor: "#01579b"
+     },
+     div2: {
+      backgroundColor: "white"
+     },
+     div3: {
+      color: "black"
+     },
+     div4: {
+      backgroundColor: "white",
+      color: "black"
+     }
+   }
     return(      
 <div class="nav-wrapper">
-  <form style="background-color: #01579b;">
-    <div className="input-field" style="background-color: white;" >
-      <input id="searchBar" type="search" style="background-color: white; color: black;" placeholder="Enter an actor name ..."/>
-      <label className="label-icon" style="background-color: white;" for="search">
-        <i className="material-icons" id="search-text" style="color:black;">search </i></label>
-      <i className="material-icons" id="x-button" style="background-color: white;" onclick="document.getElementById('searchBar').value=''" >✕</i>
+  <form style={styles.div1}>
+    <div className="input-field" style={styles.div2} >
+      <input id="searchBar" type="search" style={styles.div4} placeholder="Enter an actor name ..."/>
+      <label className="label-icon" style={styles.div2} for="search">
+        <i className="material-icons" id="search-text" style={styles.div3}>search </i></label>
+      <i className="material-icons" id="x-button" style={styles.div2} onClick="document.getElementById('searchBar').value=''" >✕</i>
     </div>        
   </form>
 </div>
   ) 
 }
-export default searchBar
+export default SearchBar
