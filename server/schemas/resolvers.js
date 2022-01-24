@@ -1,7 +1,16 @@
-const { User, Favorite } = require('../models');
-
+const { AuthenticationError } = require('apollo-server-express');
+const { Users, Favorite } = require('../models');
+//const Users = require('../models/User');
+const {signToken}=require ("../utils/auth")
 const resolvers = {
   Query: {
+    me:async(parent,args,context)=>{
+      if(context.user){
+        const userData = await User.findOne({_id:context.user._id}).select("-__v -password")
+        return userData
+      }
+      throw new AuthenticationError("user not loggedIn")
+    },
     users: async () => {
       return await User.find({}).populate('users').populate({
         path: 'users',
@@ -13,16 +22,15 @@ const resolvers = {
     },
   },
 
-  // add email to login feature?
   Mutation: {
-    addProfile: async (parent, { username, email, password }) => {
-      const profile = await Profile.create({ username, email, password });
+    addUser: async (parent, args) => {
+      const profile = await Users.create(args);
       const token = signToken(profile);
 
       return { token, profile };
     },
-    login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
+    login: async (parent, {username, password }) => {
+      const profile = await Users.findOne({ username });
 
       if (!profile) {
         throw new AuthenticationError('No profile with this username found!');

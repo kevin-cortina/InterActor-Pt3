@@ -1,4 +1,5 @@
 // need to be polished
+const{authMiddleWare}=require("./utils/auth")
 const express = require('express');
 const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context:authMiddleWare
 });
 
 server.applyMiddleware({ app });

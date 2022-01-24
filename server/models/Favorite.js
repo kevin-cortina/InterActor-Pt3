@@ -26,7 +26,7 @@ const favoriteSchema = new schema(
         favorites: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'User'
+                ref: 'Users'
             }
         ]
     }
