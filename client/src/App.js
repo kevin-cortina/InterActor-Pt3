@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/css/App.css';
 import stylesheet from './assets/css/stylesheet.css'
 import materialize from './assets/css/materialize.css'
 import NavBar from './component/NavBar';
@@ -11,7 +11,6 @@ function App() {
     <NavBar/>
     <SearchBar/>
     <InterActorPage/>
-    {/* <BioModals></BioModals> */}
 
     <link rel='stylesheet' href={stylesheet}/>
     <link rel='materialize' href={materialize}/>
