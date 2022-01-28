@@ -1,17 +1,16 @@
-import './App.css';
-// import InterActorPage from './Pages/InterActorPage';
-// import BioModals from './component/BioModals';
-// import LoginModal from './component/LoginModals';
+import './assets/css/App.css';
 import stylesheet from './assets/css/stylesheet.css'
 import materialize from './assets/css/materialize.css'
 import NavBar from './component/NavBar';
+import SearchBar from './component/SearchBar';
+import InterActorPage from './Pages/InterActorPage';
+
 function App() {
   return (
     <>
-    <NavBar></NavBar>
-    {/* <InterActorPage></InterActorPage> */}
-    {/* <BioModals></BioModals>
-    <LoginModal></LoginModal> */}
+    <NavBar/>
+    <SearchBar/>
+    <InterActorPage/>
 
     <link rel='stylesheet' href={stylesheet}/>
     <link rel='materialize' href={materialize}/>

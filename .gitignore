@@ -1,3 +1,9 @@
 node_modules
 node_modules
 node_modules
+<<<<<<< HEAD
+=======
+**/node_modules
+*/node_modules
+/node_modules
+>>>>>>> 1ae49d204827240bc4b064734a584c96fd9a0d84
