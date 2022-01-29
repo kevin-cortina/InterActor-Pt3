@@ -4,7 +4,7 @@ body {
   background-position: 0%;
   background-size: 100% 100%; 
   background-repeat: no-repeat;
-  background-color: #004d40;
+  /* background-color: #004d40; */
 }
 
 .column-1 {
@@ -30,6 +30,9 @@ body {
   opacity: 0.6;
   }
   
+nav {
+  background-color: transparent;
+}
 
   i#xButton:hover {
   }
