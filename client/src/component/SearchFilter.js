@@ -1,5 +1,5 @@
 import React from "react";
-import exportInfo from "./../utils/helpers.js"
+import exportInfo from "../utils/helpers.js"
 
 function SearchFilter(){
     const handleInput = exportInfo();

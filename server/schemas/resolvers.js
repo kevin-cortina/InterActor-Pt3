@@ -1,43 +1,43 @@
-const { User, Favorite } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { User } = require('../models');
+const { signToken } = require('../utils/auth')
 
 const resolvers = {
+  //getting the data query
   Query: {
-    users: async () => {
-      return await User.find({}).populate('users').populate({
-        path: 'users',
-        populate: 'favorites'
-      });
-    },
-    favorites: async () => {
-      return await Favorite.find({});
+    //context in this section needs to be replaced by a different object
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 
-  // add email to login feature?
-//   Mutation: {
-//     addProfile: async (parent, { username, password }) => {
-//       const profile = await Profile.create({ username, password });
-//       const token = signToken(profile);
+  //changing the data
+  Mutation: {
+    loginUser: async (parent, {email, password}) => {
+            const user = await User.findOne({ email });
 
-//       return { token, profile };
-//     },
-//     login: async (parent, { username, password }) => {
-//       const profile = await Profile.findOne({ username });
+          if (!user) {
+            throw new AuthenticationError('No profile with this email found!');
+        }
 
-//       if (!profile) {
-//         throw new AuthenticationError('No profile with this username found!');
-//       }
+        const correctPw = await user.isCorrectPassword(password);
 
-//       const correctPw = await profile.isCorrectPassword(password);
+        if (!correctPw) {
+          throw new AuthenticationError('Wrong CREDS!');
+        }
+        const token = signToken(user);
+        return {token, user};
+      },
 
-//       if (!correctPw) {
-//         throw new AuthenticationError('Incorrect password!');
-//       }
-
-//       const token = signToken(profile);
-//       return { token, profile };
-//     },
-//   },
+    addUser: async (parent, {username, email, password}) => {
+      const user = await User.create({username, email, password});
+      const token = signToken(user);
+      return {token, user}
+    },
+  }
 };
 
 

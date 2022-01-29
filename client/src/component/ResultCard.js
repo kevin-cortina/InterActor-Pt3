@@ -1,17 +1,5 @@
 import React from "react";
 
-const styles = { 
-  div: { 
-    backgroundColor: "#006064"
-   }
- }
-
-// const onClick = {
-//   div: {
-//     favBtnColor()
-//   }
-// }
-
 function ResultCard(){
     return(
         <div className="container, left-align">
