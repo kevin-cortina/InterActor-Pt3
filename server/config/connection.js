@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/index', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/interactor-db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
