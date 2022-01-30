@@ -23,7 +23,7 @@ function NavBar(){
           <button id="logout" className="btn blue darken-2 modal-trigger">Logout</button>
           </div>
           <div className="col s2">
-          <a href={BioModals} className="btn green darken-4 modal-trigger" id = "bio_btn">Login</a>
+          <a href={''} className="btn green darken-4 modal-trigger" id = "bio_btn">Login</a>
           </div>
         </div>
 
