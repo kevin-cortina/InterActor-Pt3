@@ -18,9 +18,7 @@ function App() {
       <SearchBar/>
       <InterActorPage currentPage={currentPage} />
 
-      <link rel='materialize' type='text/css' href={materialize}/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-      <link rel='stylesheet' type='text/css' href={stylesheet}/>
     </AppProvider>
   );
 }

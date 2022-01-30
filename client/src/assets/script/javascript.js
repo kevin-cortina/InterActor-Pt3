@@ -2,17 +2,6 @@
 import React, { createContext, useContext, useState } from 'react';
 const apiKey = '67ef4e4a60b4acfa5458eea4807a1de1';
 const tmdbUrl = 'https://api.themoviedb.org/3/';
-const searchField = document.getElementById('searchBar');
-const actorFiltersDiv = document.getElementById('actorFilters');
-
-// actorFiltersDiv.addEventListener('click', actorFilterClicked);
-
-
-// let appData = {
-//     actorFilters: [],
-//     commonMovieIds: [],
-//     searchResults: {}
-// };
 
 const AppContext = createContext();
 
@@ -40,48 +29,43 @@ export const AppProvider = ({ children }) => {
             });
     };
 
-    // const updateActorFilters = (actorFiltersDiv) => {
-    //     // Loop over appData actorFilters and create a button for each.
-    //     // Sample: <h4 class="header hoverable chip" id="search-filter-1">(Search Filter Placeholder) <button>close</button></h4>
-    //     // First, clear out old entries.
-    //     while (actorFiltersDiv.firstChild) {
-    //         actorFiltersDiv.removeChild(actorFiltersDiv.firstChild);
-    //     }
-    //     const actorFilters = appData.actorFilters;
-    //     for (let i = 0; i < actorFilters.length; i++) {
-    //         const actorFilter = actorFilters[i];
-    
-    //         const hTag = document.createElement('h4');
-    //         hTag.classList.add('header', 'chip', 'hoverable', 'actor-filter');
-    //         hTag.setAttribute('id', 'search-filter-' + actorFilter.id);
-    //         hTag.textContent = actorFilter.name + ' ';
-    
-    //         const button = document.createElement('button')
-    //         button.setAttribute('id', 'search-filter-' + actorFilter.id);
-    //         button.classList.add('btn', 'white', 'gray-text', 'chip', 'close-button');
-    //         button.textContent = '✕';
-    //         hTag.appendChild(button);
-    
-    //         actorFiltersDiv.appendChild(hTag)
-    //     }
-    // };
+    const makeUrlActorIdBySearchString = actorName => {
+        // Example: https://api.themoviedb.org/3/search/person?api_key=67ef4e4a60b4acfa5458eea4807a1de1&query=john%20travolta&include_adult=false
+        let url = tmdbUrl;
+        url += 'search/person';
+        url += '?api_key=' + apiKey;
+        url += '&query=' + actorName;
+        url += '&include_adult=true';
+        return url;
+    };
 
-    
+    const doFetch = async (url) => {
+        try {
+            const response = await fetch(url);
+            return await response.json();
+        } catch (err) {
+            console.log("Something went wrong calling this url:", url, err);
+        }
+    };
 
-// export const searchForActor = searchString => {
-//     const urlActorIdBySearchString = makeUrlActorIdBySearchString(searchString);
-//     doFetch(urlActorIdBySearchString)
-//         .then((data) => {
-//             // Check for duplicate actors.
-//             const isDuplicate = checkForDuplicateActor(data);
-//             if (isDuplicate) {
-//                 return;
-//             }
-//             const actor = makeActor(data);
-//             saveAppData('actor', actor);
-//             doDerivedData(actor);
-//         });
-// };
+    const checkForDuplicateActor = data => {
+        const actorId = data.results[0].id;
+        // Try to find this actor id.
+        const existingActor = appData.actorFilters.find( (actor) => {
+            return actor.id === actorId;
+        });
+    
+        if(existingActor) return true;
+        return false;
+    };
+    
+    const makeActor = data => {
+        const dataResult = data.results[0];
+        const actorId = dataResult.id;
+        const actorName = dataResult.name;
+        const actor = { id: actorId, name: actorName };
+        return actor;
+    };
 
 const doDerivedData = actor => {
     const urlMoviesByActorId = makeUrlMoviesByActorId(actor.id);
@@ -91,7 +75,7 @@ const doDerivedData = actor => {
             saveAppData(actor.id, searchResults);
             updateCommonMovieIds();
             // Now, FINALLY refresh the display with what's now in appData.
-            refreshDisplay();
+            // refreshDisplay();
         });
 };
 
@@ -136,40 +120,12 @@ const updateCommonMovieIds = () => {    // TO BE REPLACED!!!!!!!!!!!!!!!!!!!!!!!
 
 // Functions for display //////////////////////////////////////////////////////////
 // Call this whenever appData has been updated.
-const refreshDisplay = () => {
-    setAppData(appData);
-    // (console.log(appData2));
-
-    // updateActorFilters();
-    // showResults();
-};
-
-// const updateActorFilters = () => {
-//     // Loop over appData actorFilters and create a button for each.
-//     // Sample: <h4 class="header hoverable chip" id="search-filter-1">(Search Filter Placeholder) <button>close</button></h4>
-//     // First, clear out old entries.
-//     while (actorFiltersDiv.firstChild) {
-//         actorFiltersDiv.removeChild(actorFiltersDiv.firstChild);
-//     }
-//     const actorFilters = appData.actorFilters;
-//     for (let i = 0; i < actorFilters.length; i++) {
-//         const actorFilter = actorFilters[i];
-
-//         const hTag = document.createElement('h4');
-//         hTag.classList.add('header', 'chip', 'hoverable', 'actor-filter');
-//         hTag.setAttribute('id', 'search-filter-' + actorFilter.id);
-//         hTag.textContent = actorFilter.name + ' ';
-
-//         const button = document.createElement('button')
-//         button.setAttribute('id', 'search-filter-' + actorFilter.id);
-//         button.classList.add('btn', 'white', 'gray-text', 'chip', 'close-button');
-//         button.textContent = '✕';
-//         hTag.appendChild(button);
-
-//         actorFiltersDiv.appendChild(hTag)
-//     }
+// const refreshDisplay = () => {
+//     let newData = appData;
+//     setAppData({...newData});
+//     // updateActorFilters();
+//     // showResults();
 // };
-
 
 // Determine which 2 arrays of movie ids to compare.
 // If only 1 actorFilter no point in comparing so return null.
@@ -256,7 +212,7 @@ const removeActor = (actorId) => {
     saveAppData('actorDelete', actorId);
     // Recalc common movie ids.    
     refreshCommonMovieIds();
-    refreshDisplay();
+    // refreshDisplay();
 };
 
 
@@ -266,8 +222,7 @@ const saveAppData = (key, value) => {
         // console.log(appData.actorFilters, value);
         let newData = appData;
         newData.actorFilters.push(value);
-        setAppData(newData);
-        console.log(appData);
+        setAppData({...newData});
     } else if (key === 'actorDelete') {
         // Find the index of the actor to delete in actorFilters. 
         const actorToDeleteIndex = appData.actorFilters.findIndex((element) => {
@@ -278,57 +233,25 @@ const saveAppData = (key, value) => {
         newData.actorFilters.splice(actorToDeleteIndex, 1);
         // Remove actorId from search results.
         delete newData.searchResults[value];
-        setAppData(newData);
+        setAppData({...newData});
     } else if (key === 'common') {
         let newData = appData;
         newData.commonMovieIds = value;
-        setAppData(newData);
+        setAppData({...newData});
     } else {
         let newData = appData;
         newData.searchResults[key] = value;
-        setAppData(newData);
+        setAppData({...newData});
     }
     // console.log('appData is now:', appData)
 };
 
-const makeActor = data => {
-    const dataResult = data.results[0];
-    const actorId = dataResult.id;
-    const actorName = dataResult.name;
-    const actor = { id: actorId, name: actorName };
-    return actor;
-};
 
-const checkForDuplicateActor = data => {
-    const actorId = data.results[0].id;
-    // Try to find this actor id.
-    const existingActor = appData.actorFilters.find( (actor) => {
-        return actor.id === actorId;
-    });
 
-    if(existingActor) return true;
-    return false;
-};
 
-const doFetch = (url) => {
-    return fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .catch(function (err) {
-            console.log("Something went wrong calling this url:", url, err);
-        });
-};
 
-const makeUrlActorIdBySearchString = actorName => {
-    // Example: https://api.themoviedb.org/3/search/person?api_key=67ef4e4a60b4acfa5458eea4807a1de1&query=john%20travolta&include_adult=false
-    let url = tmdbUrl;
-    url += 'search/person';
-    url += '?api_key=' + apiKey;
-    url += '&query=' + actorName;
-    url += '&include_adult=false';
-    return url;
-};
+
+
 
 const makeUrlMoviesByActorId = actorId => {
     // Example: https://api.themoviedb.org/3/person/8891/movie_credits?api_key=67ef4e4a60b4acfa5458eea4807a1de1
@@ -353,7 +276,7 @@ function showResults() {
     
     resultsCol.innerHTML = "";
 
-    if (movieResultIds.length == 0) {
+    if (movieResultIds.length === 0) {
         let resultsText = resultsCol.appendChild(document.createElement("h4"));
         resultsText.setAttribute("class", "center-align");
         resultsText.textContent = "Results";
@@ -442,7 +365,7 @@ return (
             processSearchResults,
             processMovieList,
             updateCommonMovieIds,
-            refreshDisplay,
+            // refreshDisplay,
             getMovieArraysToCompare,
             findCommonMovies,
             getFirstTwoActorsCommonMovieIds,

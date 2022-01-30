@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ActorFilter({ actorFilters }) {
-  console.log(actorFilters)
   return (
     actorFilters.map((actor) => {
       const actorFilterId = 'search-filter-' + actor.id;
