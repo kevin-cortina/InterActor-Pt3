@@ -1,7 +1,6 @@
 import './assets/css/App.css';
-// import stylesheet from './assets/css/stylesheet.css'
-import materialize from './assets/css/materialize.css'
-import stylesheet from './assets/css/stylesheet.css'
+import './assets/css/materialize.css'
+import './assets/css/stylesheet.css'
 import NavBar from './component/NavBar';
 import SearchBar from './component/SearchBar';
 import InterActorPage from './Pages/InterActorPage';
@@ -24,9 +23,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-To do after app works:
-Change NavbBar to Header
-Uncheese
-*/

@@ -50,14 +50,54 @@ nav {
   background-color: transparent;
 }
 
-  i#xButton:hover {
-  }
+.close-button {
+  text-align: right;
+}
 
-  #logout {
-    margin-top: 80px;
-  }
+.card-action {
+  padding: 5px 25px !important;
+}
 
-  #bio_btn{
-    margin-top: 80px;
-    margin-left: 80px;
-  }
+.card-image{
+  max-width: 115px;
+  float: left;
+  padding:10px 10px 10px 0px;
+}
+
+.card-image .card-content{
+  display: inline-block;
+}
+
+.card-content {
+  padding: 15px 25px 10px 5px !important;
+  margin-left: 10px;
+  color: darkslategray;
+}
+
+#results-card-holder {
+  margin-left: 25px;
+  width: 90%;
+}
+
+.actor-filter {
+  width: 200px;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 0px;
+}
+
+.chip {
+  margin-right: 0px !important;
+}
+
+#logout {
+  margin-top: 80px;
+}
+
+#bio_btn{
+  margin-top: 80px;
+  margin-left: 80px;
+  background-color: cornflowerblue;
+}
