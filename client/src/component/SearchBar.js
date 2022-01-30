@@ -7,7 +7,8 @@ function SearchBar(){
   const handleInput = exportInfo();
 
 
-    return(      
+    return(  
+    <nav> 
 <div className="nav-wrapper">
   <form>
     <div className="input-field" >
@@ -19,6 +20,7 @@ function SearchBar(){
     </div>        
   </form>
 </div>
+</nav> 
   ) 
 }
 export default SearchBar

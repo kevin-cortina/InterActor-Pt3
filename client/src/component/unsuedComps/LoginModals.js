@@ -1,9 +1,9 @@
 import React from "react";
-function loginModal(props){
+function LoginModal(props){
     return(
  <div className="container">
-  <div className="modal grey darken-4" id="login">
-    <div className="modal-content">
+  {/* <div className="modal grey darken-4" id="login"> */}
+    {/* <div className="modal-content"> */}
         <div className="container">
               <h4 className="green-text center">Log In</h4>
               
@@ -32,6 +32,10 @@ function loginModal(props){
         
               <div className="row container grey darken-4">
                 <form className = "form signup-form">
+                <div className="input-field col s4">
+                    <input id="user_name_signup" type="text"/>
+                    <label for="user_name_signup">Email</label>
+                  </div>
                   <div className="input-field col s4">
                     <input id="user_name_signup" type="text"/>
                     <label for="user_name_signup">User Name</label>
@@ -50,14 +54,14 @@ function loginModal(props){
                   </form>
               </div>
         </div>
-    </div>
+    {/* </div> */}
   <div className="modal-footer grey darken-4">
   <button onClick={props.onClose} className="modal-close btn red darken-3">Close</button>
 
 
     </div>
-  </div>
+  {/* </div> */}
 </div>
     )
 }
-export default loginModal
+export default LoginModal

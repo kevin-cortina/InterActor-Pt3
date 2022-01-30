@@ -1,5 +1,6 @@
 import React from "react";
 import exportInfo from "./../utils/helpers.js"
+import LoginModal from "./unsuedComps/LoginModals.js";
 
 function SearchFilter(){
     const handleInput = exportInfo();
@@ -13,6 +14,7 @@ function SearchFilter(){
     </div>
     <div className="column-2" id="resultsCol">
         <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
+        <LoginModal/>
     </div>
     </div>
     )
