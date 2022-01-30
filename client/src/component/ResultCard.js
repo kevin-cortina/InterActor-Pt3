@@ -1,7 +1,10 @@
 import React from "react";
+import { apiKey, tmdbUrl } from "../assets/script/javascript";
 
 function ResultCard({ movieResultIds }){
   return(
+    movieResultIds.map((movie) => {
+
 
       <div className="container, left-align">
         <div className="col s12 m6 hoverable" id="results-card-holder">
@@ -19,6 +22,7 @@ function ResultCard({ movieResultIds }){
           </div>
         </div>
       </div>
+    })
   );
 }
 export default ResultCard;
