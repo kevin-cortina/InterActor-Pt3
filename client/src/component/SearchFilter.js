@@ -24,7 +24,7 @@ function SearchFilter({ currentPage }){
                 </div>
             </div>
             <div className="column-2" id="resultsCol">
-                <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
+                <h4 className="center-align" id="searchFilterResultsTitle">{appData.commonMovieIds.length === 0 ? Results : ""}</h4>
                 <ResultCard movieResultIds={appData.commonMovieIds} />
             </div>
         </div>
