@@ -106,7 +106,7 @@ export const AppProvider = ({ children }) => {
                 saveAppData(actor.id, searchResults);
                 updateCommonMovieIds();
                 // Now, FINALLY refresh the display with what's now in appData.
-                showResults();
+                // showResults();
             });
     };
 
@@ -208,7 +208,7 @@ export const AppProvider = ({ children }) => {
         saveAppData('actorDelete', actorId);
         // Recalc common movie ids.    
         refreshCommonMovieIds();
-        showResults();
+        // showResults();
     };
 
 
@@ -275,53 +275,53 @@ export const AppProvider = ({ children }) => {
 // init();
 
 //Results populaton
-    const resultsCol = document.querySelector("#resultsCol");
+    // const resultsCol = document.querySelector("#resultsCol");
 
-    function showResults() {
+    // function showResults() {
         
-        let movieResultIds = appData.commonMovieIds;
+    //     let movieResultIds = appData.commonMovieIds;
         
-        // resultsCol.innerHTML = "";
+    //     // resultsCol.innerHTML = "";
 
-        if (movieResultIds.length === 0) {
-            let resultsText = resultsCol.appendChild(document.createElement("h4"));
-            resultsText.setAttribute("class", "center-align");
-            resultsText.textContent = "Results";
-        }
+    //     if (movieResultIds.length === 0) {
+    //         let resultsText = resultsCol.appendChild(document.createElement("h4"));
+    //         resultsText.setAttribute("class", "center-align");
+    //         resultsText.textContent = "Results";
+    //     }
 
-        for (var i = 0; i < movieResultIds.length; i++) {
+    //     for (var i = 0; i < movieResultIds.length; i++) {
 
-            let movieUrl = tmdbUrl;
-            movieUrl += "movie/";
-            movieUrl += movieResultIds[i];
-            movieUrl += "?api_key=" + apiKey;
-            movieUrl += "&append_to_response=credits";
-            doFetch(movieUrl)
-                .then((data) => {
+    //         let movieUrl = tmdbUrl;
+    //         movieUrl += "movie/";
+    //         movieUrl += movieResultIds[i];
+    //         movieUrl += "?api_key=" + apiKey;
+    //         movieUrl += "&append_to_response=credits";
+    //         doFetch(movieUrl)
+    //             .then((data) => {
                     
-                    let imgUrl = "https://image.tmdb.org/t/p/w500";
-                    if (data.poster_path) {
-                        imgUrl += data.poster_path;
-                        imgUrl += '?api_key=' + apiKey;
-                    } else {
-                        imgUrl = "./assets/pictures/noPoster.jpg";
-                    }
+    //                 let imgUrl = "https://image.tmdb.org/t/p/w500";
+    //                 if (data.poster_path) {
+    //                     imgUrl += data.poster_path;
+    //                     imgUrl += '?api_key=' + apiKey;
+    //                 } else {
+    //                     imgUrl = "./assets/pictures/noPoster.jpg";
+    //                 }
 
-                    let movieData = [imgUrl, data.title, data.release_date.substring(0, 4), data.credits];
+    //                 let movieData = [imgUrl, data.title, data.release_date.substring(0, 4), data.credits];
 
-                    if (!data.release_date) {
-                        movieData[2] = data.status;
-                    }
+    //                 if (!data.release_date) {
+    //                     movieData[2] = data.status;
+    //                 }
 
-                    console.log(data.status);
+    //                 console.log(data.status);
 
                     // let directorName = ;
                     // createCard(movieData);
                     // console.log(data);
-                });
-        }
+    //             });
+    //     }
 
-    }
+    // }
 
     // function createCard(movieData) {
     //     let imgUrl = movieData[0];
@@ -384,7 +384,7 @@ export const AppProvider = ({ children }) => {
                 doFetch,
                 makeUrlActorIdBySearchString,
                 makeUrlMoviesByActorId,
-                showResults,
+                // showResults,
                 appData
                 }}
         >
