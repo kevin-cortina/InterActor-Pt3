@@ -1,17 +1,85 @@
+/* html {
+  /* height: 100vh; */
+/* }  */
+
 body {
-  background-image: linear-gradient(#01579b, #004d40);
+  background-image: linear-gradient(#2a6592, #fcf7f7);
   /* /* background-image: url(../pictures/reel3.jfif); */
   background-position: 0%;
   background-size: 100% 100%; 
   background-repeat: no-repeat;
-  background-color: #004d40;
+  /* background-color: #004d40; */
+  /* height: 100vh; */
 }
 
-#test {
-  margin-left: 10px;
+/* div.row {
+  /* min-height: 100%; */
+  /* overflow:auto; */
+/* }  */
+
+.column-1 {
+  width: 25%;
+  border-right: 1px solid #000;
+  display: inline-table;
+  padding-bottom: 35%;
+  background-color: #7e9a9a;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+  opacity: 0.6;
+  /* min-height: 100vh; */
+    /* height: auto !important; */
+    /* height: 100%; */
 }
+
+.column-2 {
+  width: 75%;
+  border-left: 1px solid #000;
+  line-height: 2em;
+  display: inline-table;
+  padding-bottom: 35%;
+  background-color: #8ec3eb;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+  opacity: 0.6;
+  /* min-height: 100vh; */
+    /* height: auto !important; */
+    /* height: 600px; */
+  }
+  
+nav {
+  background-color: transparent;
+}
+
+.close-button {
+  text-align: right;
+}
+
+.card-action {
+  padding: 5px 25px !important;
+}
+
+.card-image{
+  max-width: 115px;
+  float: left;
+  padding:10px 10px 10px 0px;
+}
+
+.card-image .card-content{
+  display: inline-block;
+}
+
+.card-content {
+  padding: 15px 25px 10px 5px !important;
+  margin-left: 10px;
+  color: darkslategray;
+}
+
+#results-card-holder {
+  margin-left: 25px;
+  width: 90%;
+}
+
 .actor-filter {
-  background-color: white;
   width: 200px;
   margin: 10px 10px;
   display: flex;
@@ -19,83 +87,17 @@ body {
   padding-left: 20px;
   padding-right: 0px;
 }
+
 .chip {
   margin-right: 0px !important;
 }
 
-.close-button {
-  text-align: right;
+#logout {
+  margin-top: 80px;
 }
 
-body {
-  background-image: linear-gradient(#01579b, #004d40);
-  /* /* background-image: url(../pictures/reel3.jfif); */
-  background-position: 0%;
-  background-size: 100% 100%; 
-  background-repeat: no-repeat;
-  background-color: #004d40;
-}
-
-/* Search Card design */
-#actorsId{
-margin-left: 10px;
-}
-/* Results Card design */
-.card-action {
-padding: 5px 25px !important;
-}
-.card-image{
-  max-width: 115px;
-  float: left;
-  padding:10px 10px 10px 0px;
-} 
-.card-image .card-content{
-display: inline-block;
-}
-.card-content {
-padding: 15px 25px 10px 5px !important;
-margin-left: 10px;
-color: white;
-}
-#results-card-holder {
-margin-left: 25px;
-width: 90%;
-}
-/* Set additional styling options for the columns*/
-.column-1 {
-  width: 25%;
-  border-right: 1px solid #000;
-display: inline-table;
-padding-bottom: 35%;
-}
-.column-2 {
-width: 75%;
-  border-left: 1px solid #000;
-  line-height: 2em;
-display: inline-table;
-padding-bottom: 35%;
-}
-
-.row:after {
-content: "";
-display: table;
-clear: both;
-  }
-  
-.row {
-display: flex;
-}
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
-
-.row {
-  display: block;
-  }
-  
-.column-1, .column-2{
-  width:100%;
-  padding-bottom: 0px;
-  }
-
+#bio_btn{
+  margin-top: 80px;
+  margin-left: 80px;
+  background-color: cornflowerblue;
 }

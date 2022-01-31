@@ -1,21 +1,24 @@
-import './App.css';
-import InterActorPage from './Pages/InterActorPage';
-// import BioModals from './component/BioModals';
-// import LoginModal from './component/LoginModals';
-import stylesheet from './assets/css/stylesheet.css'
-import materialize from './assets/css/materialize.css'
+import './assets/css/App.css';
+import './assets/css/materialize.css'
+import './assets/css/stylesheet.css'
 import NavBar from './component/NavBar';
-function App() {
-  return (
-    <>
-    {/* <NavBar></NavBar> */}
-    <InterActorPage/>
-    {/* <BioModals></BioModals>
-    <LoginModal></LoginModal> */}
+import SearchBar from './component/SearchBar';
+import InterActorPage from './Pages/InterActorPage';
+import { useState } from 'react';
+import { AppProvider } from './assets/script/javascript';
 
-    <link rel='stylesheet' href={stylesheet}/>
-    <link rel='materialize' href={materialize}/>
-    </>
+function App() {
+   const [currentPage, setCurrentPage] = useState('Results');
+
+  const handlePageChange = (page) => setCurrentPage(page);
+  return (
+    <AppProvider>
+      <NavBar handlePageChange={handlePageChange} />
+      <SearchBar/>
+      <InterActorPage currentPage={currentPage} />
+
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    </AppProvider>
   );
 }
 

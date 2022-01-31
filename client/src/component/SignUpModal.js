@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client'
-import { LOGIN_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
+// import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
-const LoginModals = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+
+const SignUpModal = () => {
+  // set initial form state
+  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  // set state for form validation
   const [validated] = useState(false);
+  // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-  const [loginUser] = useMutation(LOGIN_USER);
+
+  const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -17,7 +23,7 @@ const LoginModals = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(1)
-    // // check if form has everything (as per react-bootstrap docs)
+    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -25,17 +31,15 @@ const LoginModals = () => {
     }
 
     try {
-        const { data } = await loginUser({
-          variables: { ...userFormData }
+        const { data } = await addUser ({
+          variables: { ...userFormData}
         });
 
-
-        const { token, user } = data.loginUser;
+        const { token, user } = data.addUser;
         console.log(user);
         Auth.login(token);
     } catch (err) {
-      console.error(1);
-      setShowAlert(true);
+      console.error(err);
     }
 
     setUserFormData({
@@ -47,24 +51,40 @@ const LoginModals = () => {
 
   return (
     <>
+      {/* This is needed for the validation functionality above */}
       <form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        {/* show alert if server response is bad */}
         <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
+          Something went wrong with your signup!
         </alert>
+
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='username'>Username</label>
           <input
             type='text'
-            placeholder='Your email'
+            placeholder='Your username'
+            name='username'
+            onChange={handleInputChange}
+            value={userFormData.username}
+            required
+          />
+          <textarea type='invalid'>Username is required!</textarea>
+        </div>
+
+         <div>
+          <label htmlFor='email'>Email</label>
+          <input
+            type='email'
+            placeholder='Your email address'
             name='email'
             onChange={handleInputChange}
             value={userFormData.email}
             required
           />
           <textarea type='invalid'>Email is required!</textarea>
-          </div>
+         </div>
 
-        <div>
+         <div>
           <label htmlFor='password'>Password</label>
           <input
             type='password'
@@ -75,9 +95,9 @@ const LoginModals = () => {
             required
           />
           <textarea type='invalid'>Password is required!</textarea>
-        </div>
+          </div>
         <button
-          disabled={!(userFormData.email && userFormData.password)}
+          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
           Submit
@@ -87,4 +107,4 @@ const LoginModals = () => {
   );
 };
 
-export default LoginModals;
+export default SignUpModal;

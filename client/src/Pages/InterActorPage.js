@@ -1,19 +1,18 @@
-import React from "react";
-import SearchBar from "../component/SearchBar";
-
+import React, { useState } from "react";
+// import SearchBar from "../component/SearchBar";
+import ResultCard from "../component/ResultCard";
 import SearchFilter from "../component/SearchFilter";
-import NavBar from "../component/NavBar";
-import LoginModal from "../component/LoginModals";
+import { AppProvider } from '../assets/script/javascript';
+
+function InterActorPage({ currentPage }){
 
 
-
-function InterActorPage(){
     return(
-        <main> 
-        <NavBar/>
-        <SearchBar/>
-        <SearchFilter/>        
-        {/*<LoginModal/>*/}
+        <main>
+        {/* <SearchBar></SearchBar>   */}
+        <SearchFilter currentPage={currentPage} />
+        {/* <ResultCard/> */}
+
         </main>
     )
 }
