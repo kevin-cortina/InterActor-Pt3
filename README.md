@@ -25,8 +25,8 @@
   To run locally, download the code from the repo.  
 
   Make sure to have MongoDb running. Then proceed:  
-    `Npm i`  to install node_modules. 
-    `Npm start`  to run applicaation
+    `Npm i`  to install node_modules.  
+    `Npm start`  to run applicaation.  
   You should be able to test this application after npm start.
   
   ## Contributing
