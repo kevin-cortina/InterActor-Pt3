@@ -1,6 +1,6 @@
-html {
+/* html {
   /* height: 100vh; */
-}
+/* }  */
 
 body {
   background-image: linear-gradient(#2a6592, #fcf7f7);
@@ -12,10 +12,10 @@ body {
   /* height: 100vh; */
 }
 
-div.row {
+/* div.row {
   /* min-height: 100%; */
   /* overflow:auto; */
-}
+/* }  */
 
 .column-1 {
   width: 25%;

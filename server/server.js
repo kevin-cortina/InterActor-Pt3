@@ -5,22 +5,10 @@ const db = require('./config/connection');
 const routes = require('./routes');
 // //importing schemas
 const { typeDefs, resolvers } = require('./schemas');
-<<<<<<< HEAD
-const { authMiddleware }= require('./utils/auth')
-
-const app = express();
-const PORT = process.env.PORT || 3001;
-=======
 const { authMiddleware } = require('./utils/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware,
-});
->>>>>>> origin
 
 async function enterServer() {
   const server = new ApolloServer({
