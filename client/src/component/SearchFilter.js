@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useAppContext } from '../assets/script/javascript';
+import React, { useState, useEffect } from "react";
+import { useAppContext, apiKey, tmdbUrl } from '../assets/script/javascript';
 import ActorFilter from '../component/ActorFilter';
 import ResultCard from "./ResultCard";
 
@@ -10,9 +10,51 @@ function SearchFilter({ currentPage }){
         actorFilterClicked(e);
     }
   
+    const [cardData, setCardData] = useState([]);
+    const [containerData, setContainer] = useState([]);
+
     useEffect( () => {
-        // console.log( appData);        
-    }, [appData]);
+        const movieResultIds = appData.commonMovieIds
+        // console.log(movieResultIds)
+        setCardData([]);
+        movieResultIds.map( async (movie) => {
+
+            let movieUrl = tmdbUrl;
+            movieUrl += "movie/";
+            movieUrl += movie;
+            movieUrl += "?api_key=" + apiKey;
+            movieUrl += "&append_to_response=credits";
+            try {
+              const response = await fetch(movieUrl);
+              const data = await response.json();
+              var imgUrl = "https://image.tmdb.org/t/p/w500";
+              if (data.poster_path) {
+                  imgUrl += data.poster_path;
+                  imgUrl += '?api_key=' + apiKey;
+              } else {
+                  imgUrl = require("../assets/pictures/noPoster.jpg");
+              }
+              var movieData = [imgUrl, data.title, data.release_date.substring(0, 4), data.credits];
+              if (!data.release_date) {
+                  movieData[2] = data.status;
+              }
+            //   console.log(movieData);
+            } catch (err) {
+                console.log("Something went wrong calling this url:", movieUrl, err);
+            };
+            let posterUrl = movieData[0];
+            let movieTitle = movieData[1];
+            let movieYear = movieData[2];
+
+            let resultCardData = [];
+            resultCardData.push({posterUrl, movieTitle, movieYear});
+            // let dataContainer = resultCardData;
+            // dataContainer = [...cardData, ...resultCardData];
+            setCardData(cardData => [...cardData, ...resultCardData]);
+        })
+
+    }, [appData.commonMovieIds]);
+
 
     return(
         <div className="row">
@@ -24,7 +66,7 @@ function SearchFilter({ currentPage }){
             </div>
             <div className="column-2" id="resultsCol">
                 <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
-                <ResultCard movieResultIds={appData.commonMovieIds} />
+                <ResultCard movieResults={cardData} />
             </div>
         </div>
     )
