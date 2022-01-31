@@ -14,7 +14,6 @@ function SearchFilter({ currentPage }){
         // console.log( appData);        
     }, [appData]);
 
-
     return(
         <div className="row">
             <div className="column-1">
