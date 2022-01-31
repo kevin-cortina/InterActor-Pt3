@@ -1,6 +1,27 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+<<<<<<< HEAD
+  type User {
+    _id: ID!
+    username: String!
+    email: String!
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    me: User
+  }
+
+  type Mutation {
+    loginUser(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+  }
+=======
 type User {
     _id: ID!
     username: String!
@@ -35,30 +56,7 @@ type Mutation {
     updateUser(username: ID!, password: String!): Auth
   }
 
+>>>>>>> origin
 `;
 
 module.exports = typeDefs;
-
-
-
-// User model from project two for reference
-
-// {
-//     id: {
-//       type: DataTypes.INTEGER,
-//       primaryKey: true,
-//       autoIncrement: true
-//     },
-//     username: {
-//       type: DataTypes.STRING
-//     },
-//     password: {
-//       type: DataTypes.STRING
-//     },
-//     bio: {
-//       type: DataTypes.STRING
-//     },
-//     favorites: {
-//       type: DataTypes.STRING
-//     }
-//   },
