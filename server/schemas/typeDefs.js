@@ -21,6 +21,7 @@ type Auth {
 }
 
 type Query {
+    me: User
     users: [User]
     favorites: [Favorite]
     user(username: String!): User
