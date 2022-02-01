@@ -14,7 +14,7 @@ function SearchBar({currentPage, handlePageChange}){
     
     searchForActor(searchString);
     searchBarRef.current.value='';
-    handlePageChange('Results');
+    handlePageChange('Results')
   }
 
   return(    
