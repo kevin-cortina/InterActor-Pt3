@@ -1,4 +1,4 @@
-const { User, Favorite } = require('../models');
+const { User, Password } = require('../models');
 const { signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -38,6 +38,17 @@ const resolvers = {
       return { token, user };
     },
 
+
+    updatePassword: async (parent, { id, password }) =>
+    {
+      return await Password.findOneAndUpdate(
+        { _id: id }, 
+        password,
+        {new: true},
+      );
+    },
+
+
     removeUser: async (parent, { username, password, _id }) => {
       const user = await User.findOne({ username });
 
@@ -48,6 +59,13 @@ const resolvers = {
     },
   },
 };
+
+// export const deleteUser = {
+//   type: UserType,
+//   args: {
+//     name { type: GraphWLString}
+//   }
+// }
 
 //removeThought: async (parent, { thoughtId }) => {
 //   return Thought.findOneAndDelete({ _id: thoughtId });
