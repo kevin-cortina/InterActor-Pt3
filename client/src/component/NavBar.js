@@ -1,10 +1,10 @@
 import React from "react"
-// import BioModals from './unsuedComps/BioModals'
-// import LoginModal from "./unsuedComps/LoginModals"
 import logo from '../assets/pictures/logo2.png';
-import LoginModal from "./LoginModals";
 
-function NavBar(){
+
+function NavBar({currentPage, handlePageChange}){
+
+
     return(
         <div className="row">
     <div id="test" className="col s3">
@@ -17,7 +17,13 @@ function NavBar(){
           <button id="logout" className="btn blue darken-2 modal-trigger">Logout</button>
           </div> */}
           <div className="col s2">
-          <a href={''} className="btn modal-trigger" id = "bio_btn">Login</a>
+          <a href={''} className="btn modal-trigger"
+            onClick={(e) => {
+              e.preventDefault();
+              currentPage === 'Results' ? handlePageChange('Login') : handlePageChange('Results');
+            }} id = "login_btn">
+              {currentPage === 'Results' ? ("Login") : ("Back")}
+          </a>
           </div>
         </div>
 

@@ -94,12 +94,21 @@ nav {
   margin-top: 80px;
 }
 
-#bio_btn{
+#login_btn{
   margin-top: 80px;
   margin-left: 80px;
   background-color: transparent;
 }
 
-#bio_btn:hover {
+#login_btn:hover {
   background-color: #7ac6ff99;
+}
+
+.loginForm {
+  padding: 60px;
+  color: black;
+}
+
+.loginForm label, .loginForm  {
+  color: black;
 }

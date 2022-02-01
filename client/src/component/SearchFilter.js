@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext, apiKey, tmdbUrl } from '../assets/script/javascript';
 import ActorFilter from '../component/ActorFilter';
+import LoginModals from '../component/LoginModals';
 import ResultCard from "./ResultCard";
 
 function SearchFilter({ currentPage }){
@@ -55,6 +56,14 @@ function SearchFilter({ currentPage }){
 
     }, [appData.commonMovieIds]);
 
+    const renderPage = () => {
+        if (currentPage === 'Results') {
+            return <ResultCard movieResults={cardData} />;
+        }
+        if (currentPage === 'Login') {
+            return <LoginModals />;
+        }
+    };
 
     return(
         <div className="row">
@@ -65,8 +74,10 @@ function SearchFilter({ currentPage }){
                 </div>
             </div>
             <div className="column-2" id="resultsCol">
-                {/* <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
-                <ResultCard movieResults={cardData} /> */}
+                <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
+                {/* <ResultCard movieResults={cardData} /> */}
+                {/* <LoginModals /> */}
+                {renderPage()}
             </div>
         </div>
     )

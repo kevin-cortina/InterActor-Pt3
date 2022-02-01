@@ -46,34 +46,32 @@ const LoginModals = () => {
 
   return (
     <>
-      <form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+      <form className="loginForm" noValidate validated="false" onSubmit={handleFormSubmit}>
+        {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
-        </alert>
+        </alert> */}
         <div>
           <label htmlFor='email'>Email</label>
           <input
             type='text'
-            placeholder='Your email'
             name='email'
             onChange={handleInputChange}
             value={userFormData.email}
             required
           />
-          <textarea type='invalid'>Email is required!</textarea>
+          {/* <textarea type='invalid'>Email is required!</textarea> */}
           </div>
 
         <div>
           <label htmlFor='password'>Password</label>
           <input
             type='password'
-            placeholder='Your password'
             name='password'
             onChange={handleInputChange}
             value={userFormData.password}
             required
           />
-          <textarea type='invalid'>Password is required!</textarea>
+          {/* <textarea type='invalid'>Password is required!</textarea> */}
         </div>
         <button
           disabled={!(userFormData.email && userFormData.password)}
