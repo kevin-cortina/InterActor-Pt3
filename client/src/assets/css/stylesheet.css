@@ -75,6 +75,11 @@ nav {
 #results-card-holder {
   margin-left: 25px;
   width: 90%;
+  background-color: transparent;
+}
+
+#results-card-holder:hover {
+  background-image: radial-gradient(at -2% 24%, #fcf7f7 -140%, transparent);
 }
 
 .actor-filter {
@@ -111,4 +116,16 @@ nav {
 
 .loginForm label, .loginForm  {
   color: black;
+}
+
+#searchBar::placeholder {
+  opacity: .6;
+  color: darkslategray;
+}
+
+input#searchBar:focus {
+  background-color: transparent;
+  /* background-image: linear-gradient(to top, rgba(47, 79, 79, .3), rgba(252, 247, 247, .1), rgba(252, 247, 247, 1)); */
+  background-image: linear-gradient(to top, rgba(252, 247, 247, .5), rgba(252, 247, 247, .1), rgba(252, 247, 247, .1), rgba(47, 79, 79, .1));
+
 }
