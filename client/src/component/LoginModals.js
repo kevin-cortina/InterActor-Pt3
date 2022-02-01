@@ -29,6 +29,7 @@ const LoginModals = ({ handlePageChange }) => {
           variables: { ...userFormData }
         });
 
+
         const { token, user } = data.loginUser;
         console.log(user);
         Auth.login(token);

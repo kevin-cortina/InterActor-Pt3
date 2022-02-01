@@ -212,7 +212,6 @@ export const AppProvider = ({ children }) => {
         // showResults();
     };
 
-
     const refreshCommonMovieIds = () => {
         const numberOfActorFilters = appData.actorFilters.length;
         console.log('In refreshCommonMovieIds:', numberOfActorFilters)
@@ -249,13 +248,6 @@ export const AppProvider = ({ children }) => {
         return commonMovieIds;
     };
 
-
-
-
-
-
-
-
 // Functions for display //////////////////////////////////////////////////////////
 // Call this whenever appData has been updated.
 // const refreshDisplay = () => {
@@ -264,11 +256,6 @@ export const AppProvider = ({ children }) => {
 //     // updateActorFilters();
 //     // showResults();
 // };
-
-
-
-
-
 
 // const init = () => {
 //     searchField.focus();
