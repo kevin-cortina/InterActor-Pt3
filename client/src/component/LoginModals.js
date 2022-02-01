@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const LoginModals = () => {
+const LoginModals = ({ handlePageChange }) => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -42,6 +42,7 @@ const LoginModals = () => {
       email: '',
       password: '',
     });
+    handlePageChange('Results');
   };
 
   return (

@@ -4,7 +4,7 @@ import ActorFilter from '../component/ActorFilter';
 import LoginModals from '../component/LoginModals';
 import ResultCard from "./ResultCard";
 
-function SearchFilter({ currentPage }){
+function SearchFilter({ currentPage, handlePageChange }){
     const { appData, actorFilterClicked } = useAppContext();
 
     const handleClick = (e) => {
@@ -61,7 +61,7 @@ function SearchFilter({ currentPage }){
             return <ResultCard movieResults={cardData} />;
         }
         if (currentPage === 'Login') {
-            return <LoginModals />;
+            return <LoginModals handlePageChange={ handlePageChange }/>;
         }
     };
 

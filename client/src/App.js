@@ -42,8 +42,8 @@ function App() {
     <ApolloProvider client={client}>
       <AppProvider>
         <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-        <SearchBar/>
-        <InterActorPage currentPage={currentPage} />
+        <SearchBar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <InterActorPage currentPage={currentPage} handlePageChange={handlePageChange} />
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </AppProvider>
