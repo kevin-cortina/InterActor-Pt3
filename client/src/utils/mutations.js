@@ -30,10 +30,6 @@ export const ADD_FAVORITE = gql`
       _id
       title
       releaseDate
-<<<<<<< HEAD
-=======
-      }
->>>>>>> origin
     }
   }
 `;
