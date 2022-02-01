@@ -1,20 +1,15 @@
 html {
-  /* height: 100vh; */
+  height: 105.4%;
 }
 
 body {
-  background-image: linear-gradient(#2a6592, #fcf7f7);
+  background-image: linear-gradient(#2a6592, #fcf7f7, #fcf7f7);
   /* /* background-image: url(../pictures/reel3.jfif); */
   background-position: 0%;
   background-size: 100% 100%; 
   background-repeat: no-repeat;
   /* background-color: #004d40; */
   /* height: 100vh; */
-}
-
-div.row {
-  /* min-height: 100%; */
-  /* overflow:auto; */
 }
 
 .column-1 {
@@ -38,9 +33,12 @@ div.row {
   display: inline-table;
   padding-bottom: 35%;
   background-color: #8ec3eb;
+  background-image: linear-gradient(#8ec3eb, #fcf7f7);
   border-radius: 10px;
   box-shadow: 2px 2px 5px black;
-  opacity: 0.6;
+  opacity: 1;
+  border-left: 1px solid rgba(0,0,0,.1);
+  color: rgba(0,0,0,.5)
   /* min-height: 100vh; */
     /* height: auto !important; */
     /* height: 600px; */
@@ -99,5 +97,9 @@ nav {
 #bio_btn{
   margin-top: 80px;
   margin-left: 80px;
-  background-color: cornflowerblue;
+  background-color: transparent;
+}
+
+#bio_btn:hover {
+  background-color: #7ac6ff99;
 }

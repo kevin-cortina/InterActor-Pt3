@@ -19,11 +19,11 @@ function NavBar(){
 
     <div id="test" className="col s2 push-s6 valign-wrapper">
         <div className="row">
-          <div className="col s3">
+          {/* <div className="col s3">
           <button id="logout" className="btn blue darken-2 modal-trigger">Logout</button>
-          </div>
+          </div> */}
           <div className="col s2">
-          <a href={''} className="btn green darken-4 modal-trigger" id = "bio_btn">Login</a>
+          <a href={''} className="btn modal-trigger" id = "bio_btn">Login</a>
           </div>
         </div>
 

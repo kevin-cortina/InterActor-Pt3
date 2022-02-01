@@ -21,6 +21,7 @@
         "@mui/material": "^5.3.0",
         "axios": "^0.25.0",
         "bcrypt": "^5.0.0",
-        "nodemon": "^2.0.15"
+        "nodemon": "^2.0.15",
+        "react-scripts": "^5.0.0"
     }
 }
