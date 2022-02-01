@@ -14,6 +14,7 @@ function SearchBar(){
     
     searchForActor(searchString);
     searchBarRef.current.value='';
+    handlePageChange('Results');
   }
 
   return(    
