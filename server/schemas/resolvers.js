@@ -39,11 +39,11 @@ const resolvers = {
     },
 
 
-    updatePassword: async (parent, { id, password }) =>
+    updatePassword: async (parent, { username, password }) =>
     {
       return await Password.findOneAndUpdate(
-        { _id: id }, 
-        password,
+        { username }, 
+        { password },
         {new: true},
       );
     },

@@ -7,7 +7,6 @@ type User {
     password: Password
 }
 type Password {
-    _id: ID!
     password: String!
     user: User
 }
