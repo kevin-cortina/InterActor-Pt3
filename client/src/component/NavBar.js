@@ -2,11 +2,10 @@ import React, {useState} from "react"
 // import BioModals from './unsuedComps/BioModals'
 // import LoginModal from "./unsuedComps/LoginModals"
 import logo from '../assets/pictures/logo2.png';
-import LoginModal from "./LoginModals";
+import LoginModals from "./LoginModals";
+import SignUpModal from "./SignUpModal"
 
 function NavBar({ currentPage, handlePageChange }){
-
-  const [showModal, setShowModal] = useState(false);
 
     return(
         <div className="row">
@@ -16,15 +15,28 @@ function NavBar({ currentPage, handlePageChange }){
 
     <div id="test" className="col s2 push-s6 valign-wrapper">
         <div className="row">
+
           <div className="col s3">
           <button type="button" id="logout" className="btn blue darken-2 modal-trigger"
           
+          //added just now
+          onClick={({SignUpModal}) => handlePageChange('SignUp')}
+          className={currentPage === 'SignUp' ? 'currentPage' : ''}
+          //added just now
+
           >SignUp</button>
           </div>
+
+
           <div className="col s2">
-          <a href={''} className="btn green darken-4 modal-trigger" id = "bio_btn"
+          <button  type="button" className="btn green darken-4 modal-trigger" id = "bio_btn"
           
-          >Login</a>
+          //added just now
+          onClick={({LoginModals}) => handlePageChange('Login')}
+          className={currentPage === 'Login' ? 'currentPage' : ''}
+          //added just now
+          
+          >Login</button>
           </div>
         </div>
 

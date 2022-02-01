@@ -32,7 +32,7 @@ type Mutation {
     addUser(username: String!, password: String!, email: String): Auth
     login(username: String!, password: String!, email: String): Auth
     removeUser(username: String!, password: String!): Auth
-    updateUser(username: String!, password: String!): Auth
+    updatePassword(username: String!, password: String!): Auth
   }
 
 `;

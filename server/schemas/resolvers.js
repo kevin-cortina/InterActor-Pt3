@@ -39,6 +39,14 @@ const resolvers = {
       return { token, user };
     },
 
+    updatePassword: async (parent, { user, username, password }) => {
+      return await User.findOneAndUpdate(
+        { username },
+        { password },
+        { new: true }
+      );
+    },
+
     removeUser: async (parent, { username, password, _id }) => {
       const user = await User.findOne({ username, _id });
 
