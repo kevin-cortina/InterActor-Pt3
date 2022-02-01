@@ -1,19 +1,13 @@
 import React from "react"
-import BioModals from './unsuedComps/BioModals'
+// import BioModals from './unsuedComps/BioModals'
 // import LoginModal from "./unsuedComps/LoginModals"
 import logo from '../assets/pictures/logo2.png';
-
-const styles = {
-  div: {
-    color: 'white'
-  }
-};
+import LoginModal from "./LoginModals";
 
 function NavBar(){
     return(
         <div className="row">
     <div id="test" className="col s3">
-      {/* <h1 style={styles.div}> InterActor</h1> */}
       <img className="profile-photo" src={logo} alt={"logo"}/>
     </div>
 
@@ -32,3 +26,7 @@ function NavBar(){
     )
 }
 export default NavBar
+
+
+
+

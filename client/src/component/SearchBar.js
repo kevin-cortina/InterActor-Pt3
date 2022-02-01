@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppContext } from '../assets/script/javascript';
 
+
 function SearchBar(){
   const searchBarRef = React.useRef(null);
   const { searchForActor } = useAppContext();
@@ -28,6 +29,7 @@ function SearchBar(){
         </form>
       </div>
     </nav>
+
   ) 
 }
 export default SearchBar

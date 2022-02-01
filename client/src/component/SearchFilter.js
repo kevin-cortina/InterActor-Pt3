@@ -55,6 +55,7 @@ function SearchFilter({ currentPage }){
 
     }, [appData.commonMovieIds]);
 
+
     return(
         <div className="row">
             <div className="column-1">
