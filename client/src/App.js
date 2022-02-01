@@ -43,7 +43,7 @@ function App() {
       <AppProvider>
         <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
         <SearchBar currentPage={currentPage} handlePageChange={handlePageChange} />
-        <InterActorPage currentPage={currentPage} />
+        <InterActorPage currentPage={currentPage} handlePageChange={handlePageChange} />
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </AppProvider>
