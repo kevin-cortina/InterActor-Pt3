@@ -1,3 +1,11 @@
+import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import './assets/css/App.css';
 import './assets/css/materialize.css'
 import './assets/css/stylesheet.css'
@@ -8,6 +16,25 @@ import { useState } from 'react';
 import { AppProvider } from './assets/script/javascript';
 import LoginModals from './component/LoginModals';
 import SignUpModal from './component/SignUpModal';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Results');
@@ -24,15 +51,16 @@ function App() {
   const handlePageChange = (page) => setCurrentPage(page);
   
   return (
-    <AppProvider>
-      <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {pageLoad()}
-      
-      <SearchBar/>
-      
-      <InterActorPage  />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    </AppProvider>
+    <ApolloProvider client={client}>
+      <AppProvider>
+        <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <SearchBar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <InterActorPage currentPage={currentPage} handlePageChange={handlePageChange} />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      </AppProvider>
+    </ApolloProvider>
+
   );
 }
 

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Password } = require('../models');
 const { signToken } = require('../utils/auth')
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -38,7 +38,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
+    
     updatePassword: async (parent, { user, username, password }) => {
       return await User.findOneAndUpdate(
         { username },
@@ -57,5 +57,6 @@ const resolvers = {
     },
   },
 };
+
 
 module.exports = resolvers;

@@ -1,7 +1,8 @@
 import React from "react";
 import { useAppContext } from '../assets/script/javascript';
 
-function SearchBar(){
+
+function SearchBar({ handlePageChange }){
   const searchBarRef = React.useRef(null);
   const { searchForActor } = useAppContext();
   const handleSubmit = (event) => {
@@ -13,6 +14,7 @@ function SearchBar(){
     
     searchForActor(searchString);
     searchBarRef.current.value='';
+    handlePageChange('Results');
   }
 
   return(    

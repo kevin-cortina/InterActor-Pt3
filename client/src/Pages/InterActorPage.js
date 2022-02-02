@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-// import SearchBar from "../component/SearchBar";
-import ResultCard from "../component/ResultCard";
+import React from "react";
 import SearchFilter from "../component/SearchFilter";
-import { AppProvider } from '../assets/script/javascript';
 
-function InterActorPage({ currentPage }){
+function InterActorPage({ currentPage, handlePageChange }){
    
 
     return(
         <main>
-        {/* <SearchBar></SearchBar>   */}
-        <SearchFilter currentPage={currentPage} />
-        {/* <ResultCard/> */}
+            <SearchFilter currentPage={currentPage} handlePageChange={handlePageChange} />
         </main>
     )
 }
