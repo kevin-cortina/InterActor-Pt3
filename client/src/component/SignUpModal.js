@@ -17,7 +17,6 @@ const SignUpModal = ({ handlePageChange }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(1)
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -26,9 +25,7 @@ const SignUpModal = ({ handlePageChange }) => {
     }
 
     try {
-        const { data } = await addUser ({
-          variables: { ...userFormData}
-        });
+        const { data } = await addUser({ variables: { ...userFormData } });
         console.log(userFormData)
         const { token, user } = data.addUser;
         console.log(user);
