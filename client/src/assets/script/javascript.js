@@ -384,8 +384,7 @@
 // Global Variables
 import React, { createContext, useContext, useState } from 'react';
 
-// export const apiKey = process.env.REACT_APP_API_KEY; 
-export const apiKey = '67ef4e4a60b4acfa5458eea4807a1de1';
+export const apiKey = process.env.REACT_APP_API_KEY; 
 export const tmdbUrl = 'https://api.themoviedb.org/3/';
 
 const AppContext = createContext();
