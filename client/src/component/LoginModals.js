@@ -42,9 +42,9 @@ const LoginModals = ({ handlePageChange }) => {
     handlePageChange('Results');
   };
 
-  const buttonTest = ({ buttonTest }) => {
-    console.log(10)
-  }
+  // const buttonTest = ({ buttonTest }) => {
+  //   console.log(10)
+  // }
 
   return (
     <>

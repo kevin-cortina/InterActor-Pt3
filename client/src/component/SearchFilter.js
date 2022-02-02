@@ -84,7 +84,7 @@ function SearchFilter({ currentPage, handlePageChange }){
                 </div>
             </div>
             <div className="column-2" id="resultsCol">
-                <h4 className="center-align" id="searchFilterResultsTitle">Results</h4>
+                <h4 className="center-align" id="searchFilterResultsTitle">{currentPage === 'Results' ? "Results" : "Log in or sign up"}</h4>
                 {/* <ResultCard movieResults={cardData} /> */}
                 {/* <LoginModals /> */}
                 {renderPage()}

@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 const SignUpModal = ({ handlePageChange }) => {
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
@@ -22,14 +22,14 @@ const SignUpModal = ({ handlePageChange }) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropagation();
+      // event.stopPropagation();
     }
 
     try {
         const { data } = await addUser ({
           variables: { ...userFormData}
         });
-
+        console.log(userFormData)
         const { token, user } = data.addUser;
         console.log(user);
         Auth.login(token);
@@ -48,7 +48,7 @@ const SignUpModal = ({ handlePageChange }) => {
 
   return (
     <>
-      <form className="loginForm" noValidate validated="false" onSubmit={handleFormSubmit}>
+      <form className="loginForm"  onSubmit={handleFormSubmit}>
         {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </alert> */}

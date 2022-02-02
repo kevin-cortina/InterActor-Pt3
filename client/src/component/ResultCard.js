@@ -1,5 +1,4 @@
 import React from "react";
-import { apiKey, tmdbUrl } from "../assets/script/javascript";
 
 function ResultCard({ movieResults }){
 

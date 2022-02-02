@@ -30,12 +30,15 @@ function NavBar({currentPage, handlePageChange}){
           <div className="row">
             <div className="col s2">
             <a href={''} className="btn modal-trigger"
-              onClick={(e) => {
+              onClick={
+                Auth.loggedIn() ? Auth.logout :
+                ((e) => {
                 e.preventDefault();
                 currentPage === 'Results' ? handlePageChange('Login') : handlePageChange('Results');
-              }} id = "login_btn">
-                {currentPage === 'Results' ? ("Login/Sign-Up") : ("Back")}
-                
+                })
+              } id = "login_btn">
+                {((currentPage === 'Results') && !(Auth.loggedIn())) ? ("Login/Sign-Up") : ("Back")}
+                {((currentPage === 'Results') && (Auth.loggedIn())) ? ("Logout") : ("")}
             </a> 
 
             {/* className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)} */}
