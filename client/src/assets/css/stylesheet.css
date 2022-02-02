@@ -99,10 +99,15 @@ nav {
   margin-top: 80px;
 }
 
-#login_btn{
+#login_btn {
   margin-top: 80px;
   margin-left: 80px;
   background-color: transparent;
+  width: 144px;
+}
+
+#signUp_btn {
+  margin-top: 80px;
 }
 
 #login_btn:hover {

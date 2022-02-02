@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client'
-import { ADD_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 // import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
@@ -17,42 +17,41 @@ const LoginModals = ({ handlePageChange }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(1)
     // // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
     try {
         const { data } = await loginUser({
           variables: { ...userFormData }
         });
-
-
         const { token, user } = data.loginUser;
         console.log(user);
         Auth.login(token);
     } catch (err) {
-      console.error(1);
       setShowAlert(true);
     }
 
     setUserFormData({
-      username: '',
+      // username: '',
       email: '',
       password: '',
     });
     handlePageChange('Results');
   };
 
+
+  const submitButtonTest = ({ buttonTest }) => {
+    console.log(10)
+  }
+
+
   return (
     <>
       <form className="loginForm" noValidate validated="false" onSubmit={handleFormSubmit}>
-        {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
-        </alert> */}
+        <h4 id="loginHead">Login</h4>
         <div>
           <label htmlFor='email'>Email</label>
           <input
@@ -75,6 +74,13 @@ const LoginModals = ({ handlePageChange }) => {
             required
           />
           {/* <textarea type='invalid'>Password is required!</textarea> */}
+
+          <button
+          disabled={!(userFormData.email && userFormData.password)}
+          type='submit'
+          variant='success'
+          onClick={handleFormSubmit}
+          >Submit</button>
 
         </div>
       </form>

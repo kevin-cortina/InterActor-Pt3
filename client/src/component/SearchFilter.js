@@ -3,6 +3,7 @@ import { useAppContext, apiKey, tmdbUrl } from '../assets/script/javascript';
 import ActorFilter from '../component/ActorFilter';
 import LoginModals from '../component/LoginModals';
 import ResultCard from "./ResultCard";
+import SignUpModal from "./SignUpModal";
 
 function SearchFilter({ currentPage, handlePageChange }){
     const { appData, actorFilterClicked } = useAppContext();
@@ -61,8 +62,16 @@ function SearchFilter({ currentPage, handlePageChange }){
             return <ResultCard movieResults={cardData} />;
         }
         if (currentPage === 'Login') {
-            return <LoginModals handlePageChange={ handlePageChange }/>;
+            return (
+            <>
+            <LoginModals handlePageChange={ handlePageChange }/>
+            <SignUpModal handlePageChange={ handlePageChange }/>
+            </>
+            )
         }
+        // if (currentPage === 'SignUp') {
+        //     return <SignUpModal handlePageChange={ handlePageChange }/>;
+        // }
     };
 
 
