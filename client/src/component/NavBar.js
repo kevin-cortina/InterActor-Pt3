@@ -1,9 +1,9 @@
+
 import React from "react"
 import logo from '../assets/pictures/logo2.png';
 
 
 function NavBar({currentPage, handlePageChange}){
-
 
     return(
         <div className="row">
@@ -24,6 +24,7 @@ function NavBar({currentPage, handlePageChange}){
             }} id = "login_btn">
               {currentPage === 'Results' ? ("Login") : ("Back")}
           </a>
+
           </div>
         </div>
 

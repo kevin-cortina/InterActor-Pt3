@@ -30,7 +30,6 @@ function SearchBar({ handlePageChange }){
         </form>
       </div>
     </nav>
-
   ) 
 }
 export default SearchBar

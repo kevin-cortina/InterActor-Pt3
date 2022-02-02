@@ -65,6 +65,7 @@ function SearchFilter({ currentPage, handlePageChange }){
         }
     };
 
+
     return(
         <div className="row">
             <div className="column-1">
@@ -78,9 +79,9 @@ function SearchFilter({ currentPage, handlePageChange }){
                 {/* <ResultCard movieResults={cardData} /> */}
                 {/* <LoginModals /> */}
                 {renderPage()}
+
             </div>
         </div>
     )
 }
 export default SearchFilter
-
