@@ -3,12 +3,18 @@ const path = require('path');
 const { ApolloServer } = require('apollo-server-express')
 const db = require('./config/connection');
 // const routes = require('./routes');
+// const cors = require('cors');
+// const bodyParser = require('body-parser')
+
 // //importing schemas
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// app.use(cors())
+// app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
 
 async function enterServer() {
   const server = new ApolloServer({

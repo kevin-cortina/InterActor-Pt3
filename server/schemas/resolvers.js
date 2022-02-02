@@ -1,5 +1,6 @@
 const { User, Password } = require('../models');
 const { signToken } = require('../utils/auth')
+const { AuthenticationError } = require("apollo-server-express")
 
 const resolvers = {
   //getting the data query
@@ -21,8 +22,8 @@ const resolvers = {
 
       return { token, user };
     },
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username, password });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email, password });
 
       if (!user) {
         throw new AuthenticationError('No user with this username found!');

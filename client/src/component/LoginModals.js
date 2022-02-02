@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -13,6 +13,8 @@ const LoginModals = ({ handlePageChange }) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
+
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
