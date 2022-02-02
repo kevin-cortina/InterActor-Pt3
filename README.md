@@ -36,20 +36,17 @@
   ## License
   Community
   
-
-  ## Features
-
   
   ## Technologies
-    MongoDB: 
-    
-    Express: 
-    
-    React: 
-    
-    Node:
+  MongoDB: 
+  
+  Express: 
+  
+  React: 
+  
+  Node:
 
-    TMDB API:
+  TMDB API:
 
 
   ## Tests
