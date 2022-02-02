@@ -1,9 +1,24 @@
-
 import React from "react"
 import logo from '../assets/pictures/logo2.png';
-
+import Auth from '../utils/auth';
 
 function NavBar({currentPage, handlePageChange}){
+
+  const signOutFunc = async (e) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+       
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
 
   return(
     <div className="row">
@@ -20,7 +35,10 @@ function NavBar({currentPage, handlePageChange}){
                 currentPage === 'Results' ? handlePageChange('Login') : handlePageChange('Results');
               }} id = "login_btn">
                 {currentPage === 'Results' ? ("Login/Sign-Up") : ("Back")}
-            </a>
+                
+            </a> 
+
+            {/* className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)} */}
     
         </div>
         </div>

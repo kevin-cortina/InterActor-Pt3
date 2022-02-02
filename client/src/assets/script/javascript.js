@@ -385,6 +385,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 export const apiKey = process.env.REACT_APP_API_KEY; 
+
 export const tmdbUrl = 'https://api.themoviedb.org/3/';
 
 const AppContext = createContext();
