@@ -22,13 +22,13 @@ export const ADD_USER = gql`
   }
 `;
 export const UPDATE_PASSWORD = gql`
-  mutation updatePassword($username: String!, $password: String!) {
-    updatePassword(username: $username, password: $password) {
-      _id
+mutation updatePassword($username: String!, $password: String!) {
+  updatePassword(username:$username, password: $password) {
+    user {
       username
-      user
-      }
+      _id
     }
+  }
 `;
 export const REMOVE_USER = gql`
   mutation removeUser( $username: String!, $password: String!) {

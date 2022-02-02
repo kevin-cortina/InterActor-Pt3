@@ -15,14 +15,14 @@ const resolvers = {
 
   // add email to login feature?
   Mutation: {
-    addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, password });
+    addUser: async (parent, { email, username, password }) => {
+      const user = await User.create({ email, username, password });
       const token = signToken(user);
 
       return { token, user };
     },
     login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username, password });
 
       if (!user) {
         throw new AuthenticationError('No user with this username found!');
@@ -38,19 +38,16 @@ const resolvers = {
       return { token, user };
     },
 
-
-    updatePassword: async (parent, { username, password }) =>
-    {
-      return await Password.findOneAndUpdate(
-        { username }, 
+    updatePassword: async (parent, { user, username, password }) => {
+      return await User.findOneAndUpdate(
+        { username },
         { password },
-        {new: true},
+        { new: true }
       );
     },
 
-
     removeUser: async (parent, { username, password, _id }) => {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username, _id });
 
       if (!user) {
         throw new AuthenticationError('No user with this username found!');
