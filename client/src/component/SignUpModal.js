@@ -31,13 +31,13 @@ const SignUpModal = () => {
     }
 
     try {
-        const { data } = await addUser ({
-          variables: { ...userFormData}
-        });
+      const { data } = await addUser({
+        variables: { ...userFormData }
+      });
 
-        const { token, user } = data.addUser;
-        console.log(user);
-        Auth.login(token);
+      const { token, user } = data.addUser;
+      console.log(user);
+      Auth.login(token);
     } catch (err) {
       console.error(err);
     }
@@ -71,7 +71,7 @@ const SignUpModal = () => {
           <textarea type='invalid'>Username is required!</textarea>
         </div>
 
-         <div>
+        <div>
           <label htmlFor='email'>Email</label>
           <input
             type='email'
@@ -82,9 +82,9 @@ const SignUpModal = () => {
             required
           />
           <textarea type='invalid'>Email is required!</textarea>
-         </div>
+        </div>
 
-         <div>
+        <div>
           <label htmlFor='password'>Password</label>
           <input
             type='password'
@@ -95,7 +95,7 @@ const SignUpModal = () => {
             required
           />
           <textarea type='invalid'>Password is required!</textarea>
-          </div>
+        </div>
         <button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
